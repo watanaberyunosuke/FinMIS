@@ -34,5 +34,15 @@ public static DBUtil getDbUtil() {
 
 public int executeUpdate(String sql) {
     int result = -1;
-    if (getConn == )
+    if (getConn() == null){
+        return result;
+    }
+    try {
+        ps = conn.prepareStatement(sql);
+        result = ps.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return result;
+    }
 }
